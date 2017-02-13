@@ -83,7 +83,7 @@ class Zmieniacz implements Runnable {
 	        writer.println();
 	        licz++;
 	        if(licz % 20000 == 0)
-	        	System.out.println("przetworzono kolejne 20 000 linii")
+	        	System.out.println("przetworzono kolejne 20 000 linii");
 	    }
 	    writer.close();
 	}
