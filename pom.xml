@@ -9,14 +9,24 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <nd4j.version>0.4.1-SNAPSHOT</nd4j.version>
-        <dl4j.version>0.4.1-SNAPSHOT</dl4j.version>
+        <nd4j.version>0.7.2</nd4j.version>
+        <dl4j.version>0.7.2</dl4j.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.deeplearning4j</groupId>
-            <artifactId>deeplearning4j-ui</artifactId>
+            <artifactId>deeplearning4j-ui-model</artifactId>
+            <version>${dl4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>deeplearning4j-ui-model</artifactId>
+            <version>${dl4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>deeplearning4j-ui-components</artifactId>
             <version>${dl4j.version}</version>
         </dependency>
         <dependency>

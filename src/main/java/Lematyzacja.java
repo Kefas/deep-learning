@@ -15,13 +15,13 @@ public class Lematyzacja {
 	private static final int MYTHREADS = 10;
 	
 	public static void main(String args[]) {
-		slownik = slownik("data\\odm.txt");
+		slownik = slownik("data//odm.txt");
 		ExecutorService executor = Executors.newFixedThreadPool(MYTHREADS);
 		
-		for(int i=1;i<=MYTHREADS;i++) {
+		for(int i=7;i<=MYTHREADS;i++) {
 			
-			executor.execute((new Zmieniacz(slownik,"data\\text"+i+".txt","data\\lematyzacja"+i+".txt")));
-			System.out.println("data\\text"+i+".txt     data\\lematyzacja"+i+".txt");
+			executor.execute((new Zmieniacz(slownik,"data/text"+i+".txt","data/lematyzacja"+i+".txt")));
+			System.out.println("data//text"+i+".txt     data/lematyzacja"+i+".txt");
 		}
 				
 	}
@@ -93,7 +93,7 @@ class Zmieniacz implements Runnable {
 	    boolean przecinek = false;
 	    boolean wykrzyknik = false;
 	    boolean pytajnik = false;
-	    boolean œrednik = false;
+	    boolean srednik = false;
 	    boolean pauza = false;
 	    
 		int licz = 0;
@@ -115,7 +115,7 @@ class Zmieniacz implements Runnable {
 		}
 		if(slowo.contains(";")) {
 			slowo = slowo.replace(";", "");
-			œrednik = true;
+			srednik = true;
 		}
 		if(slowo.contains("-")) {
 			slowo = slowo.replace("-", "");
@@ -126,19 +126,19 @@ class Zmieniacz implements Runnable {
 			for(String sl : s) {			
 				if(sl.equals(slowo)){
 					if(licz == 0)
-						return przywrocZnaki(sl, kropka, przecinek, wykrzyknik, pytajnik, œrednik, pauza);
+						return przywrocZnaki(sl, kropka, przecinek, wykrzyknik, pytajnik, srednik, pauza);
 					else
-						return przywrocZnaki(s.getFirst(), kropka, przecinek, wykrzyknik, pytajnik, œrednik, pauza);
+						return przywrocZnaki(s.getFirst(), kropka, przecinek, wykrzyknik, pytajnik, srednik, pauza);
 				}
 				licz++;
 			}
 			licz =0;
 		}		
-		return przywrocZnaki(slowo, kropka, przecinek, wykrzyknik, pytajnik, œrednik, pauza);
+		return przywrocZnaki(slowo, kropka, przecinek, wykrzyknik, pytajnik, srednik, pauza);
 				
 	}
 	
-	public static String przywrocZnaki(String slowo2, boolean kropka,boolean przecinek,boolean wykrzyknik,boolean pytajnik,boolean œrednik,boolean pauza) {
+	public static String przywrocZnaki(String slowo2, boolean kropka,boolean przecinek,boolean wykrzyknik,boolean pytajnik,boolean srednik,boolean pauza) {
 		String slowo = new String(slowo2);
 		if(kropka)
 			slowo += ".";
@@ -148,7 +148,7 @@ class Zmieniacz implements Runnable {
 			slowo += "!";
 		if(pytajnik)
 			slowo += "?";
-		if(œrednik)
+		if(srednik)
 			slowo += ";";
 		if(pauza)
 			slowo += "-";
