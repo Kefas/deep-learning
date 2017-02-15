@@ -6,6 +6,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         DeepLearing4J deepLearing4J = new DeepLearing4J("data/text.txt");
+        deepLearing4J.process();
         deepLearing4J = new DeepLearing4J("data/lematyzacja.txt");
         deepLearing4J.process();
     }
