@@ -26,18 +26,12 @@ public class DeepLearing4J {
         //LOADING DATA
         System.out.println("Load & Vectorize Sentences....");
         SentenceIterator iter = new LineSentenceIterator(file);
-//        while (iter.hasNext()) {
-//            System.out.println(iter.nextSentence());
-//        }
 
         //TOKENIZING THE DATA
-
         TokenizerFactory t = new DefaultTokenizerFactory();
         t.setTokenPreProcessor(new CommonPreprocessor());
 
-
         //TRAINING THE MODEL
-
         System.out.println("Building model....");
         Word2Vec vec = new Word2Vec.Builder()
                 .minWordFrequency(5)
@@ -52,13 +46,19 @@ public class DeepLearing4J {
         System.out.println("Fitting Word2Vec model....");
         vec.fit();
 
-        System.out.println("Writing word vectors to text file....");
+        Collection<String> lst = vec.wordsNearest("dom", 10);
+        System.out.println("10 Words closest to 'dom'\n: " + lst);
 
-        // Write word vectors to file
-        WordVectorSerializer.writeWordVectors(vec, "output.txt");
+        lst = vec.wordsNearest("komputer", 10);
+        System.out.println("10 Words closest to 'komputer'\n: " + lst);
 
+        lst = vec.wordsNearest("piątek", 10);
+        System.out.println("10 Words closest to 'piątek'\n: " + lst);
 
-        Collection<String> lst = vec.wordsNearest("day", 10);
-        System.out.println("10 Words closest to 'day': " + lst);
+        lst = vec.wordsNearest("żona", 10);
+        System.out.println("10 Words closest to 'żona'\n: " + lst);
+
+        lst = vec.wordsNearest("policjant", 10);
+        System.out.println("10 Words closest to 'policjant'\n: " + lst);
     }
 }
